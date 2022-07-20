@@ -3,13 +3,28 @@ import reactLogo from "./assets/react.svg"
 import "./App.css"
 
 function App() {
-    const [count, setCount] = useState(0)
-    const changeHandler = () => {}
-    const handleSubmission = () => {}
+    const [file, setFile] = useState(0)
+    const parseURI = async () => {
+        let reader = new FileReader()
+        reader.readAsDataURL(d)
+        return new Promise((res, _) => {
+            reader.onload = (e) => {
+                console.log(e.target.result)
+                res(e.target.result)
+            }
+        })
+    }
+    const changeHandler = (e) => {
+        let files = e.target.files[0]
+        parseURI(files)
+            .then(setFile)
+            .catch(() => {})
+    }
 
     return (
         <div className="App">
             <div>
+                <h1>Starflex Worker efficiency project</h1>
                 <label for="file" className="file-label">
                     Add File
                 </label>
